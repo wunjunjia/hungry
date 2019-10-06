@@ -1,15 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import moment from 'moment'
 import App from './App'
-import Goods from '@/pages/Goods'
-import Ratings from '@/pages/Ratings'
-import Seller from '@/pages/Seller'
 import { formatDate } from './uitls'
 import './assets/style/icon.scss'
 import './reset.css'
-
-Vue.prototype.$moment = moment
 
 // 注册过滤器
 Vue.filter('formatDate', function (time, fmt) {
@@ -68,9 +62,9 @@ Vue.config.productionTip = false
 
 const routes = [
   { path: '/', redirect: '/goods' },
-  { path: '/goods', component: Goods },
-  { path: '/ratings', component: Ratings },
-  { path: '/seller', component: Seller }
+  { path: '/goods', component: () => import('@/pages/Goods') },
+  { path: '/ratings', component: () => import('@/pages/Ratings') },
+  { path: '/seller', component: () => import('@/pages/Seller') }
 ]
 
 const router = new VueRouter({

@@ -27,8 +27,8 @@
 </template>
 
 <script>
-  import Detail from './Detail'
-  import Support from '@/components/Support'
+  const Detail = resolve => require.ensure([], () => resolve(require('./Detail')))
+  const Support = () => import('@/components/Support')
 
   export default {
     name: 'Header',
